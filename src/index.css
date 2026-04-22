@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-ink: #0a0a0a;
+  --color-paper: #fcfcfc;
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image: radial-gradient(#00000015 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .blob {
+    position: absolute;
+    filter: blur(40px);
+    border-radius: 50%;
+    z-index: -1;
+    background: #000;
+  }
+
+  .blob-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: -50px;
+    opacity: 0.05;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+
+  .blob-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    left: -100px;
+    opacity: 0.03;
+    clip-path: circle(50% at 50% 50%);
+  }
+
+  .blob-dark {
+    background: #000;
+    clip-path: path('M44.7,-76.4C58.3,-69.2,70.1,-57.4,77.5,-43.3C84.8,-29.2,87.7,-12.8,85.2,2.8C82.7,18.4,74.8,33.2,64.2,46.1C53.7,59,40.5,70,25.6,75.4C10.7,80.8,-5.9,80.6,-21.8,75.8C-37.7,71,-52.9,61.6,-64.3,49C-75.7,36.4,-83.3,20.6,-85.1,4.1C-86.9,-12.4,-82.9,-29.6,-73.4,-43.1C-63.9,-56.6,-48.9,-66.4,-34,-73C-19.1,-79.6,-4.2,-83,11,-82.8C26.2,-82.6,31.1,-83.6,44.7,-76.4Z');
+  }
+
+  .minimal-card {
+    @apply bg-white border border-black/5 rounded-3xl transition-all duration-300;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .minimal-card:hover {
+    @apply border-black/10;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  }
+
+  .ink-button {
+    @apply bg-black text-white px-8 py-3 rounded-full font-sans font-bold hover:scale-[1.02] active:scale-[0.98] transition-all;
+  }
+
+  .ink-button-outline {
+    @apply border border-black text-black px-8 py-3 rounded-full font-sans font-bold hover:bg-black hover:text-white transition-all;
+  }
+}
+
+body {
+  @apply font-sans antialiased bg-paper text-ink overflow-x-hidden;
+}
+
+h1, h2, h3 {
+  @apply font-serif tracking-tight leading-[1.05];
+}
